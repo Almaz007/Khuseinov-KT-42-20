@@ -26,7 +26,7 @@ namespace Khuseinov_KT_42_20.DataBase.Configurations
 
             builder.Property(p => p.GroupName)
                 .IsRequired()
-                .HasColumnName("c_student_GroupName")
+                .HasColumnName("c_GroupName")
                 .HasColumnType(ColumnType.String).HasMaxLength(100)
                 .HasComment("Имя группы");
         }

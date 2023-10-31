@@ -1,5 +1,6 @@
 using System.Reflection.Metadata;
 using Khuseinov_KT_42_20.Data;
+using Khuseinov_KT_42_20.ServiceExtensions;
 using Microsoft.EntityFrameworkCore;
 using NLog;
 using NLog.Web;
@@ -26,6 +27,7 @@ try
                 builder.Configuration.GetConnectionString("DefaultConnection")
             )
     );
+    builder.Services.AddServices();
         /*builder.Services.AddDbContext<ApplicationDbContext>(
     options => options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")
