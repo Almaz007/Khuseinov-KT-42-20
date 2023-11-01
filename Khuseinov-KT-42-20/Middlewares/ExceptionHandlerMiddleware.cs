@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using System.Net;
+﻿using System.Net;
 
 namespace Khuseinov_KT_42_20.Middlewares
 {
@@ -67,8 +66,8 @@ namespace Khuseinov_KT_42_20.Middlewares
                 Succeeded = true;
                 Message = message;
             }
+
+
         }
-
-
     }
 }

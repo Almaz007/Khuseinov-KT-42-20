@@ -5,6 +5,7 @@ namespace Khuseinov_KT_42_20.DataBase.Helpers
     public class ColumnType
     {
         public const string Date = "timestamp";
+        public const string DateTime = "DateTime";
         public const string Guid = "uuid";
         public const string String = "varchar";
         public const string Test = "text";

@@ -1,5 +1,7 @@
 using System.Reflection.Metadata;
 using Khuseinov_KT_42_20.Data;
+using Khuseinov_KT_42_20.Middlewares;
+/*using Khuseinov_KT_42_20.Middlewares;*/
 using Khuseinov_KT_42_20.ServiceExtensions;
 using Microsoft.EntityFrameworkCore;
 using NLog;
@@ -22,7 +24,7 @@ try
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
-    builder.Services.AddDbContext<StudentDbContext>(options =>
+    builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(
                 builder.Configuration.GetConnectionString("DefaultConnection")
             )
@@ -40,7 +42,7 @@ try
         app.UseSwagger();
         app.UseSwaggerUI();
     }
-
+    app.UseMiddleware<ExceptionHandlerMiddleware>();
     app.UseAuthorization();
 
     app.MapControllers();
