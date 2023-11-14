@@ -1,4 +1,6 @@
-﻿namespace Khuseinov_KT_42_20.Models
+﻿using System.Text.Json.Serialization;
+
+namespace Khuseinov_KT_42_20.Models
 {
     public class Department
     {
@@ -7,7 +9,7 @@
         public DateTime DateFoundation { get; set; }
 
         public int TeacherCount { get; set; }
-
+        [JsonIgnore]
         public List<Teacher>? Teachers { get; set; }
     }
 }

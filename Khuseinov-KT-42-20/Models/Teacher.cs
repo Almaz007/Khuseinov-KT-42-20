@@ -1,4 +1,6 @@
 ﻿
+using System.Text.Json.Serialization;
+
 namespace Khuseinov_KT_42_20.Models
 {
     public class Teacher
@@ -13,7 +15,10 @@ namespace Khuseinov_KT_42_20.Models
         public int DepartmentId { get; set;}
         public int AcademicDegreeId { get; set;}
 
-        public Department Department { get; set;} 
+        [JsonIgnore]
+        public Department? Department { get; set;}
+        
+        [JsonIgnore]
         public AcademicDegree? AcademicDegree { get; set;}
 
         public bool IsvalidTeacherFirstName()
