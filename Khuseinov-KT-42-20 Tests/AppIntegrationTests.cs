@@ -12,16 +12,18 @@ using System.Threading.Tasks;
 
 namespace Khuseinov_KT_42_20_Tests
 {
-    internal class AppIntegrationTests
+    public class AppIntegrationTests
     {
         public readonly DbContextOptions<AppDbContext> _dbContextOptions;
 
-        public AppIntegrationTests(DbContextOptions<AppDbContext> dbContextOptions)
+        public AppIntegrationTests()
         {
-            _dbContextOptions = dbContextOptions;
+            _dbContextOptions = new DbContextOptionsBuilder<AppDbContext>().UseInMemoryDatabase(databaseName: "dbbb").Options;
+               ;
         }
 
-        public async Task GetStudentsByGroupAsync_KT3120_TwoObjects()
+        [Fact]
+        public async Task GetStudentsByGroupAsync_KT4220_threeObjects()
         {
             // Arrange
             var ctx = new AppDbContext(_dbContextOptions);
@@ -88,6 +90,14 @@ namespace Khuseinov_KT_42_20_Tests
                     MiddleName = "zxc3",
                     DepartmentId = 1,
                     AcademicDegreeId = 2
+                },
+                new Teacher
+                {
+                    FirstName = "qwerty3",
+                    LastName = "asdf3",
+                    MiddleName = "zxc3",
+                    DepartmentId = 1,
+                    AcademicDegreeId = 1
                 }
             };
             await ctx.Set<Teacher>().AddRangeAsync(teachers);
@@ -99,10 +109,10 @@ namespace Khuseinov_KT_42_20_Tests
             {
                 AcademicDegreeName = "Кандидат наук"
             };
-            var teachersResult = await teacherService.GetTeachersByAcademicDegreeAsync(filter, CancellationToken.None);
+            var teachersResult = await teacherService.GetTeachersByAcademicDegreeAsync(filter);
 
             // Assert
-            Assert.Equal(2, teachersResult.Length);
+            Assert.Equal(3, teachersResult.Length);
         }
 
     }
